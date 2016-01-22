@@ -5,3 +5,5 @@ Kanal is a data aggregation pipeline for the collection, transformation and sort
 ## Goals
 
   - Learn to write useful specifications (definitely still a WIP).
+  - Get some more practise with devops tools like Terraform, Packer, Ansible.
+  - Get better at designing microservices.

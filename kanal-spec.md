@@ -36,12 +36,21 @@ type Trosker interface {
 }
 ```
 
-> Needs more information.
+> - How will multiple tröskers be run concurrently?
+> - Can there be multiple clusters of tröskers running concurrently?
+> - How does a trösker handle 3xx/4xx/5xx?
+> - Specifically, how does a trösker handle 429/401|403s?
+> - [HTTP Status Codes][http]
+> - Needs more information.
+
+> Take inspiration from this [codewalk][sharemem].
+> And [this][marcio]
 
 ### Kanal
 Kanal is the in-memory queue between Trösker and the multitude of Gondolas
 
-> This section needs a lot of work.
+> - This section needs a lot of work.
+> - **???** May not need a _queue queue_ here but just a `go channel`.
 
 ### Gondola
 Gondola SHALL take a data packet off the queue, analyse the contents to determine whether any transformations are required before passing to the specified persistence endpoint (persistence mappings are defined in kanal.toml).
@@ -63,3 +72,6 @@ The following elements MUST be configured in the kanal.toml:
 [vital]: http://vitalstatistics.net.au
 [gecko]: http://geckoboard.com
 [keenio]: https://github.com/keen/dashboards
+[http]: https://en.wikipedia.org/wiki/List_of_HTTP_status_codes
+[sharemem]: https://golang.org/doc/codewalk/sharemem/
+[marcio]: http://marcio.io/2015/07/handling-1-million-requests-per-minute-with-golang/

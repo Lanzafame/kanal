@@ -6,14 +6,30 @@ import (
 	"github.com/pelletier/go-toml"
 )
 
+// Config contains the Toml tree read in from kanal.toml.
 type Config struct {
 	toml.TomlTree
+	FilePath string
 }
 
-func loadConfig(file string) *Config {
-	config, err := toml.LoadFile("kanal.toml")
+// NewConfig creates a new Config object.
+func NewConfig() *Config {
+	c := new(Config)
+	return c
+}
+
+// loadConfig loads the toml config file into Config.
+func (c *Config) LoadConfig(args ...interface{}) error {
+	if len(args) > 0 {
+		c.FilePath = args[0].(string)
+	} else {
+		c.FilePath = "kanal.toml"
+	}
+	config, err := toml.LoadFile(c.FilePath)
 	if err != nil {
 		log.Fatalf("loadConfig: %s", err)
+		return err
 	}
-	return &Config{*config}
+	c.TomlTree = *config
+	return nil
 }

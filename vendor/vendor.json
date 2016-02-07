@@ -1,0 +1,36 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"path": "github.com/mondough/phosphor-go",
+			"revision": "2833852a47b69a97851ef1f876e0aa0d7bd07f38",
+			"revisionTime": "2016-01-04T18:19:54Z"
+		},
+		{
+			"path": "github.com/pelletier/go-buffruneio",
+			"revision": "df1e16fde7fc330a0ca68167c23bf7ed6ac31d6d",
+			"revisionTime": "2016-01-24T20:35:03+01:00"
+		},
+		{
+			"path": "github.com/pelletier/go-toml",
+			"revision": "8176e30b38196a666c324b0735e7e454302b4b05",
+			"revisionTime": "2016-01-31T17:02:23+01:00"
+		},
+		{
+			"path": "golang.org/x/net/context",
+			"revision": "cd8c2701a5e10f044db915e65eac68f738399d22",
+			"revisionTime": "2015-10-15T20:01:14Z"
+		},
+		{
+			"path": "golang.org/x/oauth2",
+			"revision": "ef4eca6b097fad7cec79afcc278d213a6de1c960",
+			"revisionTime": "2015-10-13T14:05:36-07:00"
+		},
+		{
+			"path": "golang.org/x/oauth2/github",
+			"revision": "ef4eca6b097fad7cec79afcc278d213a6de1c960",
+			"revisionTime": "2015-10-13T14:05:36-07:00"
+		}
+	]
+}

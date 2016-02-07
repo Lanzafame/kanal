@@ -18,10 +18,10 @@ func NewConfig() *Config {
 	return c
 }
 
-// loadConfig loads the toml config file into Config.
-func (c *Config) LoadConfig(args ...interface{}) error {
-	if len(args) > 0 {
-		c.FilePath = args[0].(string)
+// LoadConfig loads the toml config file into Config.
+func (c *Config) LoadConfig(options ...interface{}) error {
+	if len(options) > 0 {
+		c.FilePath = options[0].(string)
 	} else {
 		c.FilePath = "kanal.toml"
 	}

@@ -1,7 +1,7 @@
 # Kanal Specification
 Author: Adrian Lanzafame
-Date: 17/01/2015
-Revision: 1
+Date: 2017/04/29
+Revision: 2
 Status: Raw
 
 ## Overview
@@ -30,9 +30,9 @@ For each third-party API, the following interface MUST be implemented.
 Trösker interface:
 ```go
 type Trosker interface {
-  Auth(pubkey string, seckey string)
+  Auth() *http.Client
   Get(q Query) *Response
-  Timeout(t time.Time) bool
+  Timeout() bool
 }
 ```
 
@@ -46,27 +46,45 @@ type Trosker interface {
 > Take inspiration from this [codewalk][sharemem].
 > And [this][marcio]
 
-### Kanal
-Kanal is the in-memory queue between Trösker and the multitude of Gondolas
-
-> - This section needs a lot of work.
-> - **???** May not need a _queue queue_ here but just a `go channel`.
-
 ### Gondola
 Gondola SHALL take a data packet off the queue, analyse the contents to determine whether any transformations are required before passing to the specified persistence endpoint (persistence mappings are defined in kanal.toml).
 
 > More work required.
 
 ### Luka (_translation_: Harbor/Port)
-Luka SHALL generate an API endpoint for each of the configured persistences types taken from the kanal.toml file.
+A Luka represents an API endpoint for each of the configured persistences types taken from the kanal.toml file.
 
 > Again more work required.
 
 ### Configuration (kanal.toml)
 The following elements MUST be configured in the kanal.toml:
   - Third-party API endpoints
-  - Mappings of data type to persistence endpoints
   - Persistence endpoints
+  - Mappings of data type to persistence endpoints
+
+Example configuration file:
+
+```toml
+[[sources]]
+name = "github"
+
+[[sources]]
+name = "trello"
+
+[[stores]]
+name = "postgresql"
+
+[[stores]]
+name = "boltdb"
+
+[[mappings]]
+source = "github"
+store = "postgresql"
+
+[[mappings]]
+source = "trello"
+store = "boltdb"
+```
 
 [numerics]: http://cynapse.com/numerics/
 [vital]: http://vitalstatistics.net.au

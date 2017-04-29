@@ -1,11 +1,11 @@
-package config_test
+package kanal_test
 
 import (
 	"reflect"
 	"strings"
 	"testing"
 
-	"github.com/Lanzafame/kanal"
+	"github.com/lanzafame/kanal"
 )
 
 func TestNewConfig(t *testing.T) {

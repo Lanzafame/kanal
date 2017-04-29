@@ -5,6 +5,19 @@ import (
 	"time"
 )
 
+type Source struct {
+	Name string
+}
+
+type Store struct {
+	Name string
+}
+
+type Mapping struct {
+	Source
+	Store
+}
+
 type Response interface {
 }
 

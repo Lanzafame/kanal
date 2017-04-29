@@ -1,0 +1,20 @@
+[[sources]]
+name = "github"
+
+[[sources]]
+name = "trello"
+
+[[stores]]
+name = "postgresql"
+
+[[stores]]
+name = "boltdb"
+
+[[mappings]]
+source = "github"
+store = "postgresql"
+
+[[mappings]]
+source = "trello"
+store = "boltdb"
+

@@ -6,11 +6,25 @@ import (
 	"github.com/BurntSushi/toml"
 )
 
-// Config contains the Toml tree read in from kanal.toml.
 type Config struct {
-	Sources  []Source  `toml:"sources"`
-	Stores   []Store   `toml:"stores"`
-	Mappings []Mapping `toml:"mappings"`
+	Sources  map[string]SourceConfig  `toml:"sources"`
+	Stores   map[string]StoreConfig   `toml:"stores"`
+	Mappings map[string]MappingConfig `toml:"mappings"`
+}
+
+type SourceConfig struct {
+	Name string
+	URL  string
+}
+
+type StoreConfig struct {
+	Name string
+	URL  string
+}
+
+type MappingConfig struct {
+	Stores         []string
+	Transformation string
 }
 
 // LoadConfig loads the toml config file into Config.
@@ -19,5 +33,6 @@ func LoadConfig(path string) *Config {
 	if _, err := toml.DecodeFile(path, &config); err != nil {
 		log.Printf("load config: decode file: %v", err)
 	}
+
 	return &config
 }

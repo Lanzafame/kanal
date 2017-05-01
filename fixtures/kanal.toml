@@ -1,20 +1,24 @@
-[[sources]]
+[sources.github]
 name = "github"
+url = "http://github.com/"
 
-[[sources]]
+[sources.trello]
 name = "trello"
+url = "http://trello.com/"
 
-[[stores]]
+[stores.postgresql]
 name = "postgresql"
+url = "psql://kanal"
 
-[[stores]]
+[stores.boltdb]
 name = "boltdb"
+url = "bltdb://kanal"
 
-[[mappings]]
-source = "github"
-store = "postgresql"
+[mappings.github]
+stores = ["postgresql"]
+transformation = "nil"
 
-[[mappings]]
-source = "trello"
-store = "boltdb"
+[mappings.trello]
+stores = ["boltdb"]
+transformation = "nil"
 
